@@ -1,0 +1,55 @@
+
+Project: Prediksi Harga Rumah Menggunakan Fuzzy Logic – Pune House Dataset
+
+Deskripsi Singkat:
+Proyek ini bertujuan untuk memprediksi kategori harga rumah (rendah, sedang, tinggi) berdasarkan beberapa variabel utama dari dataset Pune_House_Data.csv menggunakan pendekatan Fuzzy Logic. Fuzzy Logic digunakan karena mampu menangani ketidakpastian dan variasi dalam data harga properti, seperti perbedaan luas bangunan dan jumlah kamar mandi.
+ 
+Langkah-Langkah Pengerjaan:
+1. Import Dataset dan Library
+   - Dataset: Pune_House_Data.csv
+   - Library: numpy, pandas, matplotlib, skfuzzy, seaborn.
+   - Tujuan: memuat data dan menyiapkan alat analisis fuzzy.
+
+2. Pemilihan Fitur Utama
+   - Kolom yang digunakan: total_sqft, bath, price.
+   - Alasan: ketiga variabel ini paling berpengaruh terhadap nilai properti.
+
+3. Pembersihan dan Normalisasi Data
+   - Menghapus nilai kosong dan mengonversi data ke bentuk numerik.
+   - Normalisasi dilakukan agar rentang data sesuai dengan fungsi keanggotaan fuzzy.
+
+4. Definisi Membership Function
+   - Untuk setiap variabel dibuat tiga kategori fuzzy: Low, Medium, High.
+   - Fungsi keanggotaan menggunakan trapmf agar perubahan antar kategori lebih halus.
+
+5. Pembuatan Fuzzy Rules
+   - Contoh aturan:
+     - Jika sqft tinggi dan bath tinggi, maka harga tinggi.
+     - Jika sqft rendah dan bath sedikit, maka harga rendah.
+
+6. Proses Inferensi Fuzzy
+   - Menghitung tingkat keanggotaan setiap aturan.
+   - Melakukan agregasi hasil dan defuzzifikasi (centroid) untuk menentukan harga prediksi.
+
+7. Menambah Kolom Baru
+   - harga_per_sqft = price / total_sqft
+   - kategori_harga = hasil kategori fuzzy (rendah, sedang, tinggi)
+
+8. Visualisasi
+   - Histogram harga rumah, scatter plot, dan grafik fungsi keanggotaan fuzzy.
+
+Tools & Library
+
+Python 3.11+
+NumPy
+Pandas
+Matplotlib
+Seaborn
+Scikit-Fuzzy
+
+Output:
+- Dataset hasil fuzzy (total_sqft, bath, price, harga_per_sqft, kategori_harga)
+- Visualisasi data (histogram, scatter plot, grafik fuzzy)
+
+Kesimpulan:
+Pendekatan Fuzzy Logic berhasil digunakan untuk memprediksi kategori harga rumah berdasarkan luas dan jumlah kamar mandi. Hasil menunjukkan bahwa semakin besar luas dan jumlah kamar mandi, maka harga rumah cenderung masuk kategori tinggi. Sistem ini dapat membantu memperkirakan kisaran harga rumah secara otomatis dan fleksibel.
